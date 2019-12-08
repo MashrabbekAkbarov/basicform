@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+
+<th:block th:include="/actionBar"></th:block>
+
+<div th:if="${#request.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
+    Updates Failed!!!<br />
+</div>
+
+<h3> Profile Page</h3>
+
+<h2>Make some Updates</h2>
+
+<div>
+    <span th:if="${message!=null}" th:utext="${message}">...</span>
+</div>
+
+<form enctype="multipart/form-data" th:action="@{/dataUpdate}" method='POST'>
+    <table>
+        <!--/*@thymesVar id="guest" type="com.example.demo.Model.AppUser"*/-->
+        <tr>
+            <td>User Name:</td>
+            <td><input type='text' name='userName' th:value="${guest.userName}"/></td>
+        </tr>
+
+        <tr>
+            <td>Full Name:</td>
+            <td><input type='text' name='fullName' th:value="${guest.fullName}"/></td>
+        </tr>
+        <tr>
+            <td>Select Photo:</td>
+            <td> <input type="file" name="img"/>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="Save Updates"></td>
+            <td><a th:href="@{/homePage}" class="button">Back</a> </td>
+        </tr>
+   </table>
+
+    <br>
+    <!--/*@thymesVar id="source" type="String"*/-->
+    <img th:if="${source}!=null" th:src="${source}" height="100" width="100">
+
+</form>
+
+</body>
+</html>

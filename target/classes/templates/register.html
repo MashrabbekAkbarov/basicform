@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+</head>
+
+<body>
+
+    <h3>Registration Page</h3>
+
+    <!--/*@thymesVar id="errorMessage" type="String"*/-->
+
+    <div th:if="${errorMessage!=null}"
+         th:utext="${errorMessage}" class="error">...</div>
+
+    <!--/*@thymesVar id="userdata" type="com.example.demo.Model.UserFormData"*/-->
+
+    <form name='f' th:action="@{/register}" th:object="${userdata}" method='POST'>
+
+        <table>
+            <tr>
+                <td>User Name</td>
+                   <td><input type="text" th:field="*{userName}" /></td>
+                   <td>
+                <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">..</span>                   </td>
+            </tr>
+            <tr>
+                   <td>Full Name</td>
+                   <td><input type="text" th:field="*{fullName}" /></td>
+                   <td>
+                <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">..</span>                   </td>
+                   </td>
+            </tr>
+            <tr>
+               <td>Password</td>
+               <td><input type="password" th:field="*{password}" /> </td>
+               <td>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>                   </td>
+               </td>
+            </tr>
+            <tr>
+               <td>Confirm Password</td>
+               <td><input type="password" th:field="*{confirmPassword}" /> </td>
+               <td>
+                <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">..</span>                   </td>
+               </td>
+            </tr>
+            <tr>
+                <td><input name="submit" type="submit" value="Save" /></td>
+                <td><a th:href="@{/login}" class="button">Back</a> </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+
+</html>

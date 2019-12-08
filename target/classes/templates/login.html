@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+
+<body >
+
+<h1>Login</h1>
+
+<!--/*@thymesVar id="toString" type="String"*/-->
+
+
+
+<!--/*@thymesVar id="message" type="String"*/-->
+<div th:if="${message!=null}" th:utext="${message}" style="color:red;margin:10px 0px;">
+...
+</div>
+
+        <h3>Enter user name and password:</h3>
+
+        <form name='log' th:action="@{/login_process}" method='POST'>
+            <table>
+                <tr>
+                    <td>User:</td>
+                    <td><input type='text' name='username' value=''/></td>
+                    <div ></div>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type='password' name='password' /></td>
+                </tr>
+                <tr>
+                    <td><input name="submit" type="submit" value="submit" /></td>
+                    <td><a th:href="@{/register}" class="button">Sign Up</a> </td>
+                </tr>
+            </table>
+        </form>
+
+</body>
+
+</html>

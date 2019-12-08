@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Safe Home</title>
+</head>
+
+<body>
+<!-- Include actionBar.html -->
+<th:block th:include="/actionBar"></th:block>
+
+<h2> Home Sweet Home</h2>
+<br>
+<h1>Users in Database</h1>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Full Name</th>
+    </tr>
+    <!--/*@thymesVar id="allUsers" type="List<AppUser>"*/-->
+    <tr th:each ="user : ${allUsers}">
+        <!--/*@thymesVar id="id" type="Integer"*/-->
+        <!--/*@thymesVar id="id" type="java.lang.Integer"*/-->
+        <td th:utext="${user.id}">...</td>
+        <!--/*@thymesVar id="userName" type="java.lang.String"*/-->
+        <td th:utext="${user.userName}">...</td>
+        <!--/*@thymesVar id="userName" type="java.lang.String"*/-->
+        <td th:utext="${user.fullName}">...</td>
+    </tr>
+</table>
+
+</body>
+</html>
